@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './scss/main.scss'
 import { Dropdown } from 'semantic-ui-react'
 
 import * as actions from './redux/actions'

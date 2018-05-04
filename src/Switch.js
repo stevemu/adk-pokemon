@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './scss/main.scss'
 import { Checkbox } from 'semantic-ui-react'
 
 
