@@ -4,40 +4,43 @@ import './scss/main.scss'
 import { connect } from 'react-redux'
 import * as actions from './redux/actions'
 
+import Chart from './Chart';
+import Switch from './Switch';
+import Search from './Search';
+
 class App extends Component {
   componentDidMount() {
-    this.props.setTitle('POKEMON`')
+    this.props.setTitle('POKEMON');
+    this.props.setPokemon("Pikachu");
   }
 
   render() {
+    let {name, attack, defense, stamina, age} = this.props.pokemon;
+
     return (
       <div>
-
-        {/*
-              <h1>{this.props.title}</h1>
-
-      */}
         <div className="container">
           <div className="header">
-            Search for Pokemon
+            Search for {this.props.title}
           </div>
           <div className="search">
-            <input className="search-input" />
+            <Search />
           </div>
           <div className="profile">
             <div>
-              <img className="profile-img" src="./images/pokemon.png" />
+              <img className="profile-img" src={`./images/${name}.png`} />
             </div>
-            <div className="profile-title">Charmander</div>
+            <div className="profile-title">{name}</div>
             <div className="attributes">
-              <div>Attack: 128</div>
-              <div>Defense: 108</div>
-              <div>Stamina: 78</div>
-              <div>Age: 21</div>
+              <div>Attack: {attack}</div>
+              <div>Defense: {defense}</div>
+              <div>Stamina: {stamina}</div>
+              <div>Age: {age}</div>
             </div>
           </div>
           <div className="main">
-            Main
+            <Switch />
+            <Chart />
           </div>
         </div>
       </div>
@@ -45,9 +48,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ title }) => {
+const mapStateToProps = ({ title, pokemon }) => {
   return {
-    title
+    title,
+    pokemon
   }
 }
 
